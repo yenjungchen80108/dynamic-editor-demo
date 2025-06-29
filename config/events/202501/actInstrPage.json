@@ -1,0 +1,127 @@
+{
+  "panels_config": {
+    "4": {
+      "panel_data": [
+        {
+          "id": 3,
+          "collapsible": {
+            "min_height": 200,
+            "offset": 0
+          },
+          "container_props": {
+            "class_name": "panel-section panel-section-card"
+          },
+          "modal": {
+            "detail_button": {
+              "close_style": {
+                "display": "none"
+              },
+              "style": {
+                "right": 20,
+                "top": 450,
+                "width": 100,
+                "display": "block"
+              },
+              "title_image": "images/202501/act/instr/detail_btn.png"
+            },
+            "props": {
+              "class_name": "details-modal",
+              "panel_data": [
+                {
+                  "props": {
+                    "src": "images/202501/act/instr/act_desc.png"
+                  },
+                  "type": "image"
+                }
+              ],
+              "title": "詳細禮物說明測試",
+              "background": "#f8f9e2"
+            }
+          },
+          "props": {
+            "src": "images/202501/act/instr/0.png"
+          },
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "action_button": {
+            "payload": {
+              "tab_id": 1
+            },
+            "styles": {
+              "width": 60,
+              "top": 10,
+              "right": 4
+            },
+            "scroll_target": ".tab-list",
+            "title_image": "images/202501/act/instr/action_btn.png"
+          },
+          "container_props": {
+            "class_name": "section-1"
+          },
+          "props": {
+            "src": "images/202501/act/instr/1.png"
+          },
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "action_button": {
+            "payload": {
+              "tab_id": 2
+            },
+            "styles": {
+              "width": 60,
+              "top": 8,
+              "right": 4
+            },
+            "scroll_target": ".tab-list",
+            "title_image": "images/202501/act/instr/action_btn.png"
+          },
+          "container_props": {
+            "class_name": "section-2"
+          },
+          "props": {
+            "src": "images/202501/act/instr/2.png"
+          },
+          "type": "image"
+        },
+        {
+          "id": 2,
+          "action_button": {
+            "payload": {
+              "tab_id": 3
+            },
+            "styles": {
+              "width": 60,
+              "top": 6,
+              "right": 4
+            },
+            "scroll_target": ".tab-list",
+            "title_image": "images/202501/act/instr/action_btn.png"
+          },
+          "container_props": {
+            "class_name": "section-3"
+          },
+          "props": {
+            "src": "images/202501/act/instr/3.png"
+          },
+          "type": "image"
+        },
+        {
+          "id": 4,
+          "container_props": {
+            "class_name": "terms-text-list"
+          },
+          "props": {
+            "color": "#9f9f9f",
+            "background": "#fffced"
+          },
+          "type": "terms"
+        }
+      ],
+      "float_image_list": []
+    }
+  }
+}

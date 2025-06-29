@@ -1,0 +1,297 @@
+{
+  "metaData": {
+    "title": "Form",
+    "description": "Form",
+    "keywords": "Form"
+  },
+  "styles": {
+    "background_color": "#fff",
+    "content_color": "#fff"
+  },
+  "instr_field_type": {
+    "static_image": {
+      "type": "single_static_image",
+      "default_label": "Upload Image",
+      "required": true
+    },
+    "input_text": {
+      "type": "text",
+      "default_label": "Input Field",
+      "default_placeholder": "Input",
+      "max_length": 10,
+      "required": true
+    },
+    "input_text_color": {
+      "type": "color",
+      "default_label": "Input Color",
+      "default_placeholder": "#000",
+      "required": true
+    },
+    "input_number": {
+      "type": "number",
+      "default_label": "Input Field",
+      "default_placeholder": 0,
+      "min": { "value": 1, "message": "Must be greater than or equal to 1" },
+      "max": { "value": 5000, "message": "Must be less than or equal to 5000" },
+      "pattern": {
+        "value": "^[1-9]\\d*$",
+        "message": "Number cannot start with 0"
+      },
+      "required": true
+    },
+    "double_input_number": {
+      "type": "number",
+      "default_label": "Double Field",
+      "fields": [
+        {
+          "id": 1,
+          "type": "number",
+          "default_label": "Width",
+          "default_placeholder": 0,
+          "min": {
+            "value": 1,
+            "message": "Must be greater than or equal to 1"
+          },
+          "max": {
+            "value": 500,
+            "message": "Must be less than or equal to 500"
+          }
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "default_label": "Height",
+          "default_placeholder": 0,
+          "min": {
+            "value": 1,
+            "message": "Must be greater than or equal to 1"
+          },
+          "max": {
+            "value": 500,
+            "message": "Must be less than or equal to 500"
+          }
+        }
+      ]
+    },
+    "quadruple_input_number": {
+      "type": "number",
+      "default_label": "Four Fields",
+      "fields": [
+        {
+          "id": 1,
+          "type": "number",
+          "default_label": "Top",
+          "default_placeholder": 0,
+          "max": 10
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "default_label": "Right",
+          "default_placeholder": 0,
+          "max": 10
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "default_label": "Bottom",
+          "default_placeholder": 0,
+          "max": 10
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "default_label": "Left",
+          "default_placeholder": 0,
+          "max": 10
+        }
+      ]
+    }
+  },
+  "form_fields": {
+    "1": {
+      "title": "Single Static Image",
+      "fields": [
+        {
+          "id": 1,
+          "type": "static_image",
+          "label": "Upload Image",
+          "register_name": "props.src"
+        }
+      ]
+    },
+    "2": {
+      "title": "Static Image + Jump Button",
+      "fields": [
+        {
+          "id": 1,
+          "type": "static_image",
+          "label": "Upload Image",
+          "register_name": "props.src"
+        },
+        {
+          "id": 2,
+          "type": "input_number",
+          "label": "Corresponding TabId",
+          "register_name": "actionButton.payload.tabId",
+          "placeholder": 1
+        },
+        {
+          "id": 3,
+          "type": "static_image",
+          "label": "Upload Tab Button Image",
+          "register_name": "actionButton.titleImage",
+          "width": 150,
+          "height": 100
+        },
+        {
+          "id": 4,
+          "type": "quadruple_input_number",
+          "label": "Tab Button Position",
+          "fields": [
+            {
+              "id": 1,
+              "register_name": "actionButton.styles.top",
+              "placeholder": 0
+            },
+            {
+              "id": 2,
+              "register_name": "actionButton.styles.right",
+              "placeholder": 0
+            },
+            {
+              "id": 3,
+              "register_name": "actionButton.styles.bottom",
+              "placeholder": 0
+            },
+            {
+              "id": 4,
+              "register_name": "actionButton.styles.left",
+              "placeholder": 0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "type": "double_input_number",
+          "label": "Tab Button Size",
+          "fields": [
+            {
+              "id": 1,
+              "register_name": "actionButton.styles.height",
+              "placeholder": 100
+            },
+            {
+              "id": 2,
+              "register_name": "actionButton.styles.width",
+              "placeholder": 100
+            }
+          ]
+        }
+      ]
+    },
+    "3": {
+      "title": "Static Image + Modal",
+      "fields": [
+        {
+          "id": 1,
+          "type": "static_image",
+          "label": "Upload Image",
+          "register_name": "props.src"
+        },
+        {
+          "id": 2,
+          "type": "input_number",
+          "label": "Collapse Height",
+          "register_name": "collapsible.minHeight",
+          "placeholder": 1
+        },
+        {
+          "id": 3,
+          "type": "input_text",
+          "label": "Modal Title",
+          "register_name": "modal.props.title",
+          "placeholder": "Modal"
+        },
+        {
+          "id": 4,
+          "type": "input_text_color",
+          "label": "Modal Background",
+          "register_name": "modal.props.background",
+          "placeholder": "#fff"
+        },
+        {
+          "id": 5,
+          "type": "static_image",
+          "label": "Upload Modal Button Image",
+          "register_name": "modal.detailButton.titleImage",
+          "width": 150,
+          "height": 100
+        },
+        {
+          "id": 6,
+          "type": "quadruple_input_number",
+          "label": "Modal Button Position",
+          "fields": [
+            {
+              "id": 1,
+              "register_name": "modal.detailButton.style.top",
+              "placeholder": 0
+            },
+            {
+              "id": 2,
+              "register_name": "modal.detailButton.style.right",
+              "placeholder": 0
+            },
+            {
+              "id": 3,
+              "register_name": "modal.detailButton.style.bottom",
+              "placeholder": 0
+            },
+            {
+              "id": 4,
+              "register_name": "modal.detailButton.style.left",
+              "placeholder": 0
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "type": "double_input_number",
+          "label": "Modal Button Size",
+          "fields": [
+            {
+              "id": 1,
+              "register_name": "modal.detailButton.style.height",
+              "placeholder": 100
+            },
+            {
+              "id": 2,
+              "register_name": "modal.detailButton.style.width",
+              "placeholder": 100
+            }
+          ]
+        }
+      ]
+    },
+    "4": {
+      "title": "Terms",
+      "fields": [
+        {
+          "id": 1,
+          "type": "input_text_color",
+          "label": "Terms Text Color",
+          "register_name": "props.color",
+          "placeholder": "#000"
+        },
+        {
+          "id": 2,
+          "type": "input_text_color",
+          "label": "Terms Background Color",
+          "register_name": "props.background",
+          "placeholder": "#fff"
+        }
+      ]
+    }
+  }
+}

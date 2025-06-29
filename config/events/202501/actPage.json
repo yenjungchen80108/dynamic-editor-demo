@@ -1,0 +1,29 @@
+{
+  "metaData": {
+    "title": "活動頁",
+    "description": "活動頁",
+    "keywords": "活動頁"
+  },
+  "styles": {
+    "background_color": "#fff",
+    "content_color": "#fff"
+  },
+  "panels_config": {
+    "1": {
+      "title": "title1",
+      "content": "content1"
+    },
+    "2": {
+      "title": "title2",
+      "content": "content2"
+    },
+    "3": {
+      "title": "title3",
+      "content": "content3"
+    },
+    "5": {
+      "title": "title4",
+      "content": "content4"
+    }
+  }
+}
