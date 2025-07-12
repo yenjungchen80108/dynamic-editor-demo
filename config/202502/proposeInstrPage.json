@@ -1,0 +1,137 @@
+{
+  "panelsConfig": {
+    "5": {
+      "panelData": {
+        "0": {
+          "id": 3,
+          "collapsible": {
+            "minHeight": 405,
+            "offset": 0
+          },
+          "containerProps": {
+            "className": "panel-section panel-section-card"
+          },
+          "modal": {
+            "detailButton": {
+              "closeStyle": {
+                "display": "none"
+              },
+              "style": {
+                "width": 200,
+                "right": 40,
+                "bottom": 275,
+                "top": "",
+                "left": "",
+                "height": ""
+              },
+              "titleImage": "/assets/images/202502/propose/instr/detail_btn.png"
+            },
+            "props": {
+              "className": "details-modal",
+              "panelData": {
+                "0": {
+                  "props": {
+                    "src": "/assets/images/202502/propose/instr/act_desc.png"
+                  },
+                  "type": "image"
+                }
+              },
+              "title": "機率彈窗",
+              "background": "#000000"
+            }
+          },
+          "props": {
+            "src": "/assets/images/202502/propose/instr/0.png"
+          },
+          "type": "image"
+        },
+        "1": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 1
+            },
+            "styles": {
+              "width": 55,
+              "top": 25,
+              "right": 45,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202502/propose/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-1"
+          },
+          "props": {
+            "src": "/assets/images/202502/propose/instr/1.png"
+          },
+          "type": "image"
+        },
+        "2": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 2
+            },
+            "styles": {
+              "width": 55,
+              "top": 25,
+              "right": 5,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202502/propose/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-2"
+          },
+          "props": {
+            "src": "/assets/images/202502/propose/instr/2.png"
+          },
+          "type": "image"
+        },
+        "3": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 3
+            },
+            "styles": {
+              "width": 55,
+              "top": 40,
+              "right": 5,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202502/propose/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-3"
+          },
+          "props": {
+            "src": "/assets/images/202502/propose/instr/3.png"
+          },
+          "type": "image"
+        },
+        "4": {
+          "id": 5,
+          "containerProps": {
+            "className": "terms-text-list"
+          },
+          "props": {
+            "color": "#c7b3ff",
+            "background": "transparent"
+          },
+          "type": "terms"
+        }
+      }
+    }
+  }
+}
