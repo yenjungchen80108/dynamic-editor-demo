@@ -1,0 +1,11 @@
+{
+  "meta_data": {
+    "title": "JSON Editor",
+    "description": "",
+    "keywords": "JSON Editor"
+  },
+  "styles": {
+    "background_color": "#fff",
+    "content_color": "#fff"
+  }
+}
