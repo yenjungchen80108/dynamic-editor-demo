@@ -322,6 +322,8 @@ export const useFileEditor = () => {
             targetBranch,
             commitMessage,
             mrTitle,
+            authorName,
+            authorEmail,
           }) => {
             try {
               await commitAndOpenMR({
@@ -332,6 +334,8 @@ export const useFileEditor = () => {
                 filePath: selectedFile, // e.g. 'configs/foo.json'
                 content: text, // 編輯器最新內容
                 mrTitle,
+                authorName,
+                authorEmail,
               });
             } catch (e) {
               console.error(e);

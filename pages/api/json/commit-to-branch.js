@@ -1,7 +1,15 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
   try {
-    const { projectId, branch, commitMessage, filePath, content } = req.body;
+    const {
+      projectId,
+      branch,
+      commitMessage,
+      filePath,
+      content,
+      authorName,
+      authorEmail,
+    } = req.body;
     if (!projectId || !branch || !commitMessage || !filePath) {
       return res.status(400).json({ error: "missing parameters" });
     }
@@ -19,6 +27,8 @@ export default async function handler(req, res) {
           content,
         },
       ],
+      ...(authorName ? { author_name: authorName } : {}),
+      ...(authorEmail ? { author_email: authorEmail } : {}),
     };
 
     const gitlabRes = await fetch(url, {

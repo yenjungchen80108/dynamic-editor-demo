@@ -4,14 +4,16 @@ import { ModalContainer } from "../../styles";
 import { StyledReqWrapper } from "./styles";
 
 const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
-  // 1. 用户输入目标分支
+  // 1. 用戶輸入目標分支
   const [targetBranch, setTargetBranch] = useState("main");
-  // 2. 来源分支自动生成：target + 时间戳，也可让用户覆盖
+  // 2. 來源分支自動生成：target + 時間戳，也可讓用戶覆蓋
   const [sourceBranch, setSourceBranch] = useState("");
   const [commitMessage, setCommitMessage] = useState("");
   const [mrTitle, setMrTitle] = useState("");
+  const [authorName, setAuthorName] = useState("");
+  const [authorEmail, setAuthorEmail] = useState("");
 
-  // 当 targetBranch 改变时，重置 sourceBranch
+  // 當 targetBranch 改變時，重置 sourceBranch
   useEffect(() => {
     const ts = Date.now();
     setSourceBranch(`${targetBranch}-mr-${ts}`);
@@ -24,6 +26,8 @@ const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
       commitMessage,
       mrTitle: mrTitle || commitMessage,
       filePath,
+      authorName,
+      authorEmail,
     });
     onClose();
   };
@@ -62,6 +66,20 @@ const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
           value={mrTitle}
           onChange={(e) => setMrTitle(e.target.value)}
           placeholder="Title for MR"
+        />
+
+        <label>作者名稱</label>
+        <input
+          value={authorName}
+          onChange={(e) => setAuthorName(e.target.value)}
+          placeholder="e.g. jane doe"
+        />
+
+        <label>作者 Email</label>
+        <input
+          value={authorEmail}
+          onChange={(e) => setAuthorEmail(e.target.value)}
+          placeholder="e.g. jane@example.com"
         />
 
         <button onClick={handleOk} disabled={!commitMessage || !sourceBranch}>

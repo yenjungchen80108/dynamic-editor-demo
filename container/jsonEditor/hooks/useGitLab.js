@@ -11,6 +11,8 @@ export function useGitLab() {
       filePath,
       content,
       mrTitle,
+      authorName,
+      authorEmail,
     }) => {
       // 1. 拿 projectId
       let res = await fetch(
@@ -44,6 +46,8 @@ export function useGitLab() {
           commitMessage,
           filePath,
           content,
+          authorName,
+          authorEmail,
         }),
       });
       if (!res.ok) {
