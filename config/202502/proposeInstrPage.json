@@ -17,7 +17,7 @@
                 "display": "none"
               },
               "style": {
-                "width": 200,
+                "width": 300,
                 "right": 40,
                 "bottom": 275,
                 "top": "",
@@ -36,7 +36,7 @@
                   "type": "image"
                 }
               },
-              "title": "機率彈窗",
+              "title": "機率彈窗123",
               "background": "#000000"
             }
           },
