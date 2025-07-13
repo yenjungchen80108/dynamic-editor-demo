@@ -1,0 +1,125 @@
+{
+  "panelsConfig": {
+    "5": {
+      "title": "活動說明測試123",
+      "subtitle": "僅限浪直播簽約主播",
+      "desc": "簽約主播合約截止必須在2025年3月9日之後",
+      "panelData": {
+        "0": {
+          "id": 3,
+          "collapsible": {
+            "minHeight": 580,
+            "offset": 0
+          },
+          "containerProps": {
+            "className": "panel-section panel-section-card"
+          },
+          "props": {
+            "src": "/assets/images/202412/pocker/instr/0.png"
+          },
+          "type": "image"
+        },
+        "1": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 1
+            },
+            "styles": {
+              "width": 100,
+              "bottom": 10,
+              "right": 5
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202412/pocker/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-1"
+          },
+          "props": {
+            "src": "/assets/images/202412/pocker/instr/1.png"
+          },
+          "type": "image"
+        },
+        "2": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 2
+            },
+            "styles": {
+              "width": 100,
+              "bottom": 10,
+              "right": 5
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202412/pocker/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-2"
+          },
+          "props": {
+            "src": "/assets/images/202412/pocker/instr/2.png"
+          },
+          "type": "image"
+        },
+        "3": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 3
+            },
+            "styles": {
+              "width": 100,
+              "bottom": 10,
+              "right": 5
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202412/pocker/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-3"
+          },
+          "props": {
+            "src": "/assets/images/202412/pocker/instr/3.png"
+          },
+          "type": "image"
+        },
+        "4": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 4
+            },
+            "styles": {
+              "width": 100,
+              "bottom": 90,
+              "right": 5
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202412/pocker/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-4"
+          },
+          "props": {
+            "src": "/assets/images/202412/pocker/instr/4.png"
+          },
+          "type": "image"
+        },
+        "5": {
+          "id": 5,
+          "containerProps": {
+            "className": "terms-text-list"
+          },
+          "props": {
+            "color": "#B8AAA0",
+            "background": "fff"
+          },
+          "type": "terms"
+        }
+      },
+      "floatImageList": {}
+    }
+  }
+}
