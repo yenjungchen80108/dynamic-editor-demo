@@ -25,4 +25,14 @@ export const StyledReqWrapper = styled.div`
       color: #ccc;
     }
   }
+
+  button {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    color: #000;
+  }
 `;

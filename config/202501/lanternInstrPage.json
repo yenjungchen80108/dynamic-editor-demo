@@ -1,0 +1,161 @@
+{
+  "panelsConfig": {
+    "5": {
+      "panelData": {
+        "0": {
+          "id": 3,
+          "collapsible": {
+            "minHeight": 355,
+            "offset": 0
+          },
+          "containerProps": {
+            "className": "panel-section panel-section-card"
+          },
+          "seeMore": {
+            "styles": {
+              "bg": "#000000",
+              "color": "#ffffff",
+              "borderRadius": "20"
+            }
+          },
+          "modal": {
+            "detailButton": {
+              "style": {
+                "right": "",
+                "bottom": "",
+                "width": 130,
+                "display": "block",
+                "top": -100,
+                "left": 10,
+                "height": ""
+              },
+              "titleImage": "/assets/images/202501/lantern/instr/detail_btn.png"
+            },
+            "props": {
+              "className": "details-modal",
+              "panelData": {
+                "0": {
+                  "props": {
+                    "src": "/assets/images/202501/lantern/instr/act_desc.png"
+                  },
+                  "type": "image"
+                }
+              },
+              "title": "詳細禮物說明",
+              "background": "transparent"
+            }
+          },
+          "props": {
+            "src": "/assets/images/202501/lantern/instr/0.png"
+          },
+          "type": "image"
+        },
+        "1": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 1
+            },
+            "styles": {
+              "width": 56,
+              "top": 10,
+              "right": 10,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202501/lantern/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-1"
+          },
+          "props": {
+            "src": "/assets/images/202501/lantern/instr/1.png"
+          },
+          "type": "image"
+        },
+        "2": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 2
+            },
+            "styles": {
+              "width": 56,
+              "top": 10,
+              "right": 10,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202501/lantern/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-2"
+          },
+          "props": {
+            "src": "/assets/images/202501/lantern/instr/2.png"
+          },
+          "type": "image"
+        },
+        "3": {
+          "id": 2,
+          "actionButton": {
+            "payload": {
+              "tabId": 3
+            },
+            "styles": {
+              "width": 56,
+              "top": 10,
+              "right": 10,
+              "bottom": "",
+              "left": "",
+              "height": ""
+            },
+            "scrollTarget": ".tab-list",
+            "titleImage": "/assets/images/202501/lantern/instr/action_btn.png"
+          },
+          "containerProps": {
+            "className": "section-3"
+          },
+          "props": {
+            "src": "/assets/images/202501/lantern/instr/3.png"
+          },
+          "type": "image"
+        },
+        "4": {
+          "id": 5,
+          "containerProps": {
+            "className": "terms-text-list"
+          },
+          "props": {
+            "color": "#fff824",
+            "background": "transparent"
+          },
+          "type": "terms"
+        }
+      },
+      "title": "時程與參賽資格",
+      "desc": "2月3日12:00-2月12日23:59",
+      "textList": {
+        "0": "活動一：彩繪燈籠 2/3 12:00－2/12 23:59",
+        "1": "活動二：金蛇納福團 2/3 12:00－2/12 23:59",
+        "2": "活動三：福氣排行榜 2/3 12:00－2/12 23:59",
+        "3": "活動四 單日：金蛇起舞慶元宵 2/12 00:00－2/12 23:59"
+      },
+      "text": "僅限合約有效期在2025年5月3日之後浪直播簽約主播參加",
+      "floatImageList": {
+        "0": {
+          "img": "/assets/images/202501/lantern/ani/1.png",
+          "styles": {
+            "width": 100,
+            "bottom": 1258,
+            "left": 138
+          }
+        }
+      }
+    }
+  }
+}
