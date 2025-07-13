@@ -44,53 +44,55 @@ const MergeModal = ({ className, onClose, title, conflicts, onApply }) => {
     >
       <CloseIcon onClose={onClose} />
       {title && <div className="title">{title}</div>}
-      <TableWrapper>
-        <StyledTableContainer>
-          <thead>
-            <tr>
-              <th>Path</th>
-              <th>Local</th>
-              <th>Remote</th>
-              <th>使用</th>
-            </tr>
-          </thead>
-          <tbody>
-            {conflicts.map((c) => (
-              <tr key={c.path}>
-                <td>{c.path}</td>
-                <LocalCell>{JSON.stringify(c.local)}</LocalCell>
-                <RemoteCell>{JSON.stringify(c.remote)}</RemoteCell>
-                <ActionCell>
-                  <label>
-                    <input
-                      type="radio"
-                      name={c.path}
-                      checked={selected[c.path] === "local"}
-                      onChange={() => handleSelect(c.path, "local")}
-                    />{" "}
-                    本地
-                  </label>
-                  <label style={{ marginLeft: "8px" }}>
-                    <input
-                      type="radio"
-                      name={c.path}
-                      checked={selected[c.path] === "remote"}
-                      onChange={() => handleSelect(c.path, "remote")}
-                    />{" "}
-                    遠端
-                  </label>
-                </ActionCell>
+      <div className="content">
+        <TableWrapper>
+          <StyledTableContainer>
+            <thead>
+              <tr>
+                <th>Path</th>
+                <th>Local</th>
+                <th>Remote</th>
+                <th>使用</th>
               </tr>
-            ))}
-          </tbody>
-        </StyledTableContainer>
-      </TableWrapper>
-      <Footer>
-        <Button onClick={onClose}>取消</Button>
-        <Button primary onClick={handleApply}>
-          確認合併
-        </Button>
-      </Footer>
+            </thead>
+            <tbody>
+              {conflicts.map((c) => (
+                <tr key={c.path}>
+                  <td>{c.path}</td>
+                  <LocalCell>{JSON.stringify(c.local)}</LocalCell>
+                  <RemoteCell>{JSON.stringify(c.remote)}</RemoteCell>
+                  <ActionCell>
+                    <label>
+                      <input
+                        type="radio"
+                        name={c.path}
+                        checked={selected[c.path] === "local"}
+                        onChange={() => handleSelect(c.path, "local")}
+                      />{" "}
+                      本地
+                    </label>
+                    <label style={{ marginLeft: "8px" }}>
+                      <input
+                        type="radio"
+                        name={c.path}
+                        checked={selected[c.path] === "remote"}
+                        onChange={() => handleSelect(c.path, "remote")}
+                      />{" "}
+                      遠端
+                    </label>
+                  </ActionCell>
+                </tr>
+              ))}
+            </tbody>
+          </StyledTableContainer>
+        </TableWrapper>
+        <Footer>
+          <Button onClick={onClose}>取消</Button>
+          <Button primary onClick={handleApply}>
+            確認合併
+          </Button>
+        </Footer>
+      </div>
     </ModalContainer>
   );
 };

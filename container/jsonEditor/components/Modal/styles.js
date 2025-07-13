@@ -1,16 +1,23 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+
+import { border } from "styled-system";
 
 export const ModalContainer = styled.div`
   min-height: 200px;
   background: #fff;
   padding: 0px 0px 20px 0px;
-  display: flex;
   border-radius: 10px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: #000;
   position: relative;
+  min-width: 500px;
+  ${border}
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   .title {
     width: 100%;
@@ -26,4 +33,4 @@ export const ModalContainer = styled.div`
     font-weight: 600;
     border-radius: 10px 10px 0px 0px;
   }
-`
+`;

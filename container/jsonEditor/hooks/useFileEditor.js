@@ -6,11 +6,12 @@ import { toast } from "react-toastify";
 
 import { loadJsonToYMap } from "../utils/yjs";
 import { getJsonDifferences, smartMergeJson, deepSet } from "../utils/sync";
-import { COMMON_MODAL_TYPE } from "../constant";
+import { COMMON_MODAL_TYPE, GITLAB_BASE, PROJECT_PATH } from "../constant";
 import { openCommonModal } from "../store/modal/slice";
 
 import { useHandleUpload } from "./useHandleUpload";
 import { useS3File } from "./useS3File";
+import { useGitLab } from "./useGitLab";
 
 export const useFileEditor = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export const useFileEditor = () => {
 
   const { handleUpload } = useHandleUpload();
   const { doc, yroot, loading } = useS3File(selectedFile);
+  const { commitAndOpenMR } = useGitLab();
 
   // 當文件加載完成時調用
   const handleInitLoad = useCallback((initialText) => {
@@ -296,10 +298,50 @@ export const useFileEditor = () => {
     setJsonError(null);
   }, []);
 
+  // const openNewMR = ({ sourceBranch, targetBranch, title, description }) => {
+  //   const url = new URL(`${GITLAB_BASE}/${PROJECT_PATH}/-/merge_requests/new`);
+  //   url.searchParams.set("merge_request[source_branch]", sourceBranch);
+  //   url.searchParams.set("merge_request[target_branch]", targetBranch);
+  //   if (title) url.searchParams.set("merge_request[title]", title);
+  //   if (description)
+  //     url.searchParams.set("merge_request[description]", description);
+  //   window.open(url.toString(), "_blank");
+  // };
+
   // 發送合併到本地
   const handleMergeToLocal = useCallback(() => {
     console.log("merge to local", selectedFile);
-  }, [selectedFile]);
+    dispatch(
+      openCommonModal({
+        modalType: COMMON_MODAL_TYPE.REQUEST_MODAL,
+        modalProps: {
+          title: "發 MR 到遠端",
+          filePath: selectedFile,
+          onSubmit: async ({
+            sourceBranch,
+            targetBranch,
+            commitMessage,
+            mrTitle,
+          }) => {
+            try {
+              await commitAndOpenMR({
+                projectPath: PROJECT_PATH,
+                sourceBranch,
+                targetBranch,
+                commitMessage,
+                filePath: selectedFile, // e.g. 'configs/foo.json'
+                content: text, // 編輯器最新內容
+                mrTitle,
+              });
+            } catch (e) {
+              console.error(e);
+              alert("操作失敗: " + e.message);
+            }
+          },
+        },
+      })
+    );
+  }, [selectedFile, text]);
 
   // 檢查是否有未保存的更改
   const hasUnsavedChanges = text !== originalText && text !== "";
