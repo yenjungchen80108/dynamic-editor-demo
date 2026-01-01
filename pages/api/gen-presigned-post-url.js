@@ -31,20 +31,28 @@ export default async function handler(req, res) {
       console.warn("File may not exist yet, proceeding without ETag.");
     }
 
+    const cacheControl = "max-age=180";
+
     // **Step 2: 生成 Presigned URL**
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: key,
       ContentType: "application/json",
-      Metadata: {
-        "Cache-Control": "no-cache",
-      },
+      CacheControl: cacheControl,
     });
 
     const presignedUrl = await getSignedUrl(s3, command, { expiresIn: 900 }); // URL 有效期 15 分钟
 
     // **Step 3: 返回最新 ETag 和 Presigned URL**
-    res.status(200).json({ url: presignedUrl, key, latestETag });
+    res.status(200).json({
+      url: presignedUrl,
+      key,
+      latestETag,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": cacheControl,
+      },
+    });
   } catch (error) {
     console.error("Error generating presigned URL:", error);
     res.status(500).json({ message: "Failed to generate presigned URL" });

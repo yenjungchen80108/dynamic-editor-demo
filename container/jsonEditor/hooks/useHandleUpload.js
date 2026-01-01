@@ -25,9 +25,10 @@ export const useHandleUpload = () => {
 
       if (!response.ok) throw new Error("Failed to get presigned URL");
 
-      const { url, key } = await response.json();
+      const { url, key, headers } = await response.json();
+      console.log("fetch-headers", headers);
 
-      return { url, key };
+      return { url, key, headers };
     } catch (error) {
       console.error("Error getting presigned URL:", error);
     }
@@ -40,7 +41,7 @@ export const useHandleUpload = () => {
   const handleUpload = useCallback(async (fileName, dataToUpload) => {
     try {
       // 1. 向後端拿 presigned URL
-      const { url, key } = await fetchPresignedUrl(fileName);
+      const { url, key, headers } = await fetchPresignedUrl(fileName);
 
       // 2. 直接使用 presigned URL 上傳檔案內容
       // 先把 dataToUpload 轉成 JSON 字串
@@ -48,13 +49,11 @@ export const useHandleUpload = () => {
         typeof dataToUpload === "string"
           ? dataToUpload
           : JSON.stringify(dataToUpload);
+      console.log("upload-headers", headers);
       const uploadResponse = await fetch(url, {
         method: "PUT",
         body: fileContent,
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "s-maxage=0,max-age=0,must-revalidate",
-        },
+        headers,
       });
 
       if (!uploadResponse.ok) {
