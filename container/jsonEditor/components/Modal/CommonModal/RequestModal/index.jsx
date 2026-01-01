@@ -2,16 +2,41 @@ import { useState, useEffect } from "react";
 import CloseIcon from "@/container/jsonEditor/components/CloseIcon";
 import { ModalContainer } from "../../styles";
 import { StyledReqWrapper } from "./styles";
+import { useBranches } from "@/container/jsonEditor/hooks/useBranches";
+import { useMembers } from "@/container/jsonEditor/hooks/useMembers";
+
+import { PROJECT_PATH } from "@/container/jsonEditor/constant";
 
 const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
-  // 1. 用戶輸入目標分支
+  const [projectId, setProjectId] = useState(null);
+  const { branches, loading: brLoading } = useBranches(projectId);
+  const { members, loading: mbLoading } = useMembers(projectId);
+
   const [targetBranch, setTargetBranch] = useState("main");
-  // 2. 來源分支自動生成：target + 時間戳，也可讓用戶覆蓋
   const [sourceBranch, setSourceBranch] = useState("");
   const [commitMessage, setCommitMessage] = useState("");
   const [mrTitle, setMrTitle] = useState("");
-  const [authorName, setAuthorName] = useState("");
-  const [authorEmail, setAuthorEmail] = useState("");
+  const [authorId, setAuthorId] = useState(null);
+
+  useEffect(() => {
+    async function fetchProjectId() {
+      try {
+        const res = await fetch(
+          `/api/json/get-proj-id?projectPath=${encodeURIComponent(
+            PROJECT_PATH
+          )}`
+        );
+        if (!res.ok) throw new Error("getProjectId 失敗");
+        const { id } = await res.json();
+        setProjectId(id);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchProjectId();
+    // 因為我們只要在 mount 時跑一次，就把依賴留空
+  }, []);
 
   // 當 targetBranch 改變時，重置 sourceBranch
   useEffect(() => {
@@ -20,14 +45,15 @@ const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
   }, [targetBranch]);
 
   const handleOk = () => {
+    const author = members.find((m) => m.id === authorId);
     onSubmit({
       targetBranch,
       sourceBranch,
       commitMessage,
       mrTitle: mrTitle || commitMessage,
       filePath,
-      authorName,
-      authorEmail,
+      authorName: author?.name || "",
+      authorEmail: author?.username + "@gmail.com", // or other mapping
     });
     onClose();
   };
@@ -42,11 +68,20 @@ const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
       <div className="title">發 MR 到遠端</div>
       <StyledReqWrapper>
         <label>目標分支</label>
-        <input
-          value={targetBranch}
-          onChange={(e) => setTargetBranch(e.target.value)}
-          placeholder="e.g. main"
-        />
+        {brLoading ? (
+          <p>Loading branches...</p>
+        ) : (
+          <select
+            value={targetBranch}
+            onChange={(e) => setTargetBranch(e.target.value)}
+          >
+            {branches.map((b) => (
+              <option key={b} value={b}>
+                {b}
+              </option>
+            ))}
+          </select>
+        )}
 
         <label>新來源分支</label>
         <input
@@ -68,21 +103,27 @@ const RequestModal = ({ className, onClose, filePath, onSubmit }) => {
           placeholder="Title for MR"
         />
 
-        <label>作者名稱</label>
-        <input
-          value={authorName}
-          onChange={(e) => setAuthorName(e.target.value)}
-          placeholder="e.g. jane doe"
-        />
+        <label>作者</label>
+        {mbLoading ? (
+          <p>Loading members...</p>
+        ) : (
+          <select
+            value={authorId ?? undefined}
+            onChange={(e) => setAuthorId(Number(e.target.value))}
+          >
+            <option value="">— 選擇作者 —</option>
+            {members.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.name} ({m.username})
+              </option>
+            ))}
+          </select>
+        )}
 
-        <label>作者 Email</label>
-        <input
-          value={authorEmail}
-          onChange={(e) => setAuthorEmail(e.target.value)}
-          placeholder="e.g. jane@example.com"
-        />
-
-        <button onClick={handleOk} disabled={!commitMessage || !sourceBranch}>
+        <button
+          onClick={handleOk}
+          disabled={!commitMessage || !sourceBranch || !authorId}
+        >
           送出
         </button>
       </StyledReqWrapper>
