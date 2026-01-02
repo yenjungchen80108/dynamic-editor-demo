@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project with instruction editor prototype.
+This is a [Next.js](https://nextjs.org) project with json editor prototype.
 
 ## Getting Started
 
@@ -14,4 +14,4 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000/events/202501/instrEditor](http://localhost:3000/events/202501/instrEditor) with your browser to see the editor.
+Open [http://localhost:3000/json-editor](http://localhost:3000/json-editor) with your browser to see the editor.
